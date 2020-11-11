@@ -28,7 +28,6 @@
             width: 750px;
             margin: auto;
             box-shadow: 10px 0px 18px 8px #999;
-
         }
 
         table th {
@@ -45,7 +44,8 @@
         span {
             color: red;
         }
-        i{
+
+        i {
             display: inline-block;
             width: 100%;
             height: 100%;
@@ -69,17 +69,11 @@
             box-shadow: 5px -5px 18px 3px #999, -5px 5px 18px 3px #999;
         }
     </style>
-
 </head>
 
 <body>
     <div>
-
-
         <?php
-
-
-
         if (isset($_POST['s'])) {
             $m = mb_substr($_POST['s'], 5, 2);
         } else if (isset($_GET['m'])) {
@@ -154,10 +148,17 @@
             ];
 
 
+            //設定週數
+            $week = 0;
+            if ($t + $w <= 28) {
+                $week = 4;
+            } else if ($t + $w > 28 && $t + $w <= 35) {
+                $week = 5;
+            } else {
+                $week = 6;
+            }
 
-
-
-            for ($i = 0; $i < 6; $i++) {
+            for ($i = 0; $i < $week; $i++) {
                 echo "<tr>";
                 for ($j = 0; $j < 7; $j++) {
                     $date = '';
@@ -176,7 +177,7 @@
                             echo $hd[$m . '-' . $date];
                         }
                         echo "</span>";
-                    }else{
+                    } else {
                         if ($i == 0 && $j < $w) {
                             echo "&nbsp;";
                         } else if ((($i * 7) + ($j + 1) - $w) > $t) {
@@ -196,11 +197,6 @@
             ?>
         </table>
     </div>
-
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 
 </html>
