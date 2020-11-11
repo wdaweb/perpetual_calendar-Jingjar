@@ -13,11 +13,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url("unnamed.gif") 380px 600px,url("unnamed2.gif") 200px 150px,url("angel-ganev-729-copy.jpg");
+            background: url("unnamed.gif") 380px 600px, url("unnamed2.gif") 200px 150px, url("nangel-ganev-729-copy.jpg")-65px 0;
             color: white;
-            font-family:fantasy;
+            font-family: fantasy;
             font-size: 20px;
-            background-repeat:no-repeat ;
+            background-repeat: no-repeat;
         }
 
         p {
@@ -27,8 +27,8 @@
         table {
             width: 750px;
             margin: auto;
-            box-shadow: 10px 10px 18px 8px #999;
-            
+            box-shadow: 10px 0px 18px 8px #999;
+
         }
 
         table th {
@@ -39,28 +39,34 @@
             height: 70px;
             text-align: center;
             position: relative;
-            box-shadow: -10px 5px 10px 3px #999 inset,10px -5px 10px 3px #999 inset;
+            box-shadow: -10px 5px 10px 3px #999 inset, 10px -5px 10px 3px #999 inset;
         }
 
-        span{
-            
-            display:inline-block;
+        span {
+            color: red;
+        }
+        i{
+            display: inline-block;
             width: 100%;
             height: 100%;
-            background: lightcoral;
+            z-index: -1;
+            background: salmon;
             position: absolute;
             bottom: 0;
             left: 0;
-            z-index: -1;
+            color: white;
         }
-        p{
+
+        p {
             height: 5px;
         }
-        input{
-            box-shadow: 5px -5px 18px 3px #999,-5px 5px 18px 3px #999 ;
+
+        input {
+            box-shadow: 5px -5px 18px 3px #999, -5px 5px 18px 3px #999;
         }
-        button{
-            box-shadow: 5px -5px 18px 3px #999,-5px 5px 18px 3px #999 ;
+
+        button {
+            box-shadow: 5px -5px 18px 3px #999, -5px 5px 18px 3px #999;
         }
     </style>
 
@@ -82,9 +88,8 @@
             $m = date('m');
         }
         if (isset($_POST['s'])) {
-             $y = mb_substr($_POST['s'], 0, 4);
-        }
-        else if (isset($_GET['y'])) {
+            $y = mb_substr($_POST['s'], 0, 4);
+        } else if (isset($_GET['y'])) {
             $y = $_GET['y'];
         } else {
             $y = date('Y');
@@ -103,7 +108,7 @@
             $ny = $y;
             $nm = $m + 1;
         }
-        
+
         //"這個月=>".$m;
 
         $t = date('t', strtotime($y . '-' . $m . '-1'));
@@ -118,35 +123,35 @@
         ?>
         <!-- Y是$_GET['y'] m是$_GET['m'] -->
         <div class="d-flex justify-content-between">
-            <a class="badge badge-pill py-2 m-1" href="calendar.php?y=<?= $py ?>&m=<?= $pm ?>"><button type="button" class="btn btn-secondary"><<</button></a>
-            <form class="form-inline mb-2" action="calendar.php" method="post">
-            <div class="form-group">
-                <input type="text" class="form-control" name="s" placeholder='yyyy-m'>
-            </div>
-            <input type="submit" class="btn btn-secondary m-1" value="SEND">
-            </form>
-            <a class="badge badge-pill py-2 m-1" class="float-right" href="calendar.php?y=<?= $ny ?>&m=<?= $nm ?>"><button type="button" class="btn btn-secondary">>></button></a>
+            <a class="badge badge-pill py-2 m-1" href="calendar.php?y=<?= $py ?>&m=<?= $pm ?>"><button type="button" class="btn btn-secondary">
+                    <<</button> </a> <form class="form-inline mb-2" action="calendar.php" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="s" placeholder='yyyy-m'>
+                        </div>
+                        <input type="submit" class="btn btn-secondary m-1" value="SEND">
+                        </form>
+                        <a class="badge badge-pill py-2 m-1" class="float-right" href="calendar.php?y=<?= $ny ?>&m=<?= $nm ?>"><button type="button" class="btn btn-secondary">>></button></a>
         </div>
         <table>
             <tr>
-                <th style="color: #333;">Sun</th>
+                <th style="color: #333;"><span> Sun</span></th>
                 <th style="color: #333;">Mon</th>
                 <th style="color: #333;">Tue</th>
                 <th style="color: #333;">Wed</th>
                 <th style="color: #333;">Thu</th>
                 <th style="color: #333;">Fri</th>
-                <th style="color: #333;">Sat</th>
+                <th style="color: #333;"><span>Sat</span></th>
             </tr>
 
             <?php
-$hd=[  //有放假的節日
-    '1-1'=>"<span>元旦</span>",
-    '2-28'=>"<span>二二八</span>",
-    '4-4'=>"<span>婦幼節</span>",
-    '4-5'=>"<span>清明節</span>",
-    '5-1'=>"<span>勞動節</span>",
-    '10-10'=>"<span>國慶日</span>",
-];
+            $hd = [  //有放假的節日
+                '1-1' => "<i>元旦</i>",
+                '2-28' => "<i>二二八</i>",
+                '4-4' => "<i>婦幼節</i>",
+                '4-5' => "<i>清明節</i>",
+                '5-1' => "<i>勞動節</i>",
+                '10-10' => "<i>國慶日</i>",
+            ];
 
 
 
@@ -155,20 +160,33 @@ $hd=[  //有放假的節日
             for ($i = 0; $i < 6; $i++) {
                 echo "<tr>";
                 for ($j = 0; $j < 7; $j++) {
-                    $date='';
+                    $date = '';
                     echo "<th>";
-                    if($j==0||$j==6){
-                        echo '<span></span>';
-                    }
-                    if ($i == 0 && $j <$w) {
-                        echo "&nbsp;";
-                    } else if ((($i * 7) + ($j + 1) - $w) > $t) {
-                    } else {
-                        echo (($i * 7) + ($j + 1) - $w);
-                        $date=(($i * 7) + ($j + 1) - $w);
-                    }
-                    if(!empty($hd[$m.'-'.$date])){
-                        echo $hd[$m.'-'.$date];
+                    if ($j == 0 || $j == 6) {
+                        echo '<span>';
+
+                        if ($i == 0 && $j < $w) {
+                            echo "&nbsp;";
+                        } else if ((($i * 7) + ($j + 1) - $w) > $t) {
+                        } else {
+                            echo (($i * 7) + ($j + 1) - $w);
+                            $date = (($i * 7) + ($j + 1) - $w);
+                        }
+                        if (!empty($hd[$m . '-' . $date])) {
+                            echo $hd[$m . '-' . $date];
+                        }
+                        echo "</span>";
+                    }else{
+                        if ($i == 0 && $j < $w) {
+                            echo "&nbsp;";
+                        } else if ((($i * 7) + ($j + 1) - $w) > $t) {
+                        } else {
+                            echo (($i * 7) + ($j + 1) - $w);
+                            $date = (($i * 7) + ($j + 1) - $w);
+                        }
+                        if (!empty($hd[$m . '-' . $date])) {
+                            echo $hd[$m . '-' . $date];
+                        }
                     }
                     echo "</th>";
                 }
