@@ -117,14 +117,14 @@
         ?>
         <!-- Y是$_GET['y'] m是$_GET['m'] -->
         <div class="d-flex justify-content-between">
-            <a class="badge badge-pill py-2 m-1" href="calendar.php?y=<?= $py ?>&m=<?= $pm ?>"><button type="button" class="btn btn-secondary">
-                    <<</button> </a> <form class="form-inline mb-2" action="calendar.php" method="post">
+            <a class="badge badge-pill py-2 m-1" href="index.php?y=<?= $py ?>&m=<?= $pm ?>"><button type="button" class="btn btn-secondary">
+                    <<</button> </a> <form class="form-inline mb-2" action="index.php" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="s" placeholder='yyyy-m'>
+                            <input type="text" class="form-control" name="s" placeholder='yyyy-m' value="<?=date("Y-m");?>">
                         </div>
                         <input type="submit" class="btn btn-secondary m-1" value="SEND">
                         </form>
-                        <a class="badge badge-pill py-2 m-1" class="float-right" href="calendar.php?y=<?= $ny ?>&m=<?= $nm ?>"><button type="button" class="btn btn-secondary">>></button></a>
+                        <a class="badge badge-pill py-2 m-1" class="float-right" href="index.php?y=<?= $ny ?>&m=<?= $nm ?>"><button type="button" class="btn btn-secondary">>></button></a>
         </div>
         <table>
             <tr>
